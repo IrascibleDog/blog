@@ -28,11 +28,16 @@
       require_once('views/posts/index.php');
     }
 
+      public function append_show() {
+          require_once('views/posts/append_form.php');
+      }
+
       public function append() {
 
           //check login!!
 
-
+          $posts = Post::add($_POST['post_author'], $_POST['post_cont']);
+          require_once('views/posts/index.php');
       }
   }
 ?>
