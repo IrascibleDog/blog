@@ -41,16 +41,6 @@
 
       public static function delete($id)
       {
-//      $db = Db::getInstance();
-//      // we make sure $id is an integer
-//      $id = intval($id);
-//      $req2 = $db->prepare('DELETE FROM posts WHERE id = :id');
-//      // the query was prepared, now we replace :id with our actual $id value
-//      $req2->execute(array('id' => $id));
-//      $post = $req2->fetch();
-//
-//      return new Post($post['id'], $post['author'], $post['content'], $post['date']);
-
           $list = [];
           $db = Db::getInstance();
           $req = $db->prepare('DELETE FROM posts WHERE id = :id');
@@ -65,6 +55,10 @@
           }
 
           return $list;
+      }
+
+      public static function add() {
+
       }
   }
 ?>

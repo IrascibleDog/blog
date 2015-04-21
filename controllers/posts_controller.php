@@ -30,6 +30,9 @@
 
       public function append() {
 
+          //check login!!
+
+
       }
   }
 ?>
