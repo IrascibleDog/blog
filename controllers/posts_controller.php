@@ -40,6 +40,15 @@
           require_once('views/posts/index.php');
       }
 
+      public function refresh_show() {
+          if (!isset($_GET['id']))
+              return call('pages', 'error');
+
+          // we use the given id to get the right post
+          $post = Post::find($_GET['id']);
+          require_once('views/posts/refresh_form.php');
+      }
+
       public function refresh() {
           if (!isset($_GET['id']))
               return call('pages', 'error');
