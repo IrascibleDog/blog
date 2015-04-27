@@ -10,13 +10,17 @@
         require_once('models/post.php');
         $controller = new PostsController();
       break;
+        case 'registration' :
+            require_once('models/registration.php');
+            $controller = new PostsController();
     }
 
     $controller->{ $action }();
   }
 
   $controllers = array('pages' => ['home', 'error'],
-                       'posts' => ['index', 'show', 'remove', 'append_show', 'append', 'refresh_show', 'refresh']);
+                       'posts' => ['index', 'show', 'remove', 'append_show', 'append', 'refresh_show', 'refresh'],
+                        'registration' => []);
 
   if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {
