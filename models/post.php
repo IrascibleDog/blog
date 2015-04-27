@@ -77,10 +77,8 @@
       public static function update($id, $post_author, $post_cont) {
           $list = [];
           $db = Db::getInstance();
-          $req = $db->prepare('UPDATE posts SET :post_author, :post_cont WHERE id = :id');
-          $req->bindParam(':post_author', $post_author);
-          $req->bindParam(':post_cont', $post_cont);
-          $req->execute(array('id' => $id));
+          $req = $db->prepare('UPDATE posts SET author = :post_author, content = :post_cont WHERE id = :id');
+          $req->execute(array('id' => $id, 'post_author' => $post_author, 'post_cont' => $post_cont));
 
           $req = $db->query('SELECT * FROM posts');
 
