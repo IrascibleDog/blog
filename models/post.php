@@ -73,5 +73,23 @@
 
           return $list;
       }
+
+      public static function update($id, $post_author, $post_cont) {
+          $list = [];
+          $db = Db::getInstance();
+          $req = $db->prepare('UPDATE posts SET :post_author, :post_cont WHERE id = :id');
+          $req->bindParam(':post_author', $post_author);
+          $req->bindParam(':post_cont', $post_cont);
+          $req->execute(array('id' => $id));
+
+          $req = $db->query('SELECT * FROM posts');
+
+          // we create a list of Post objects from the database results
+          foreach ($req->fetchAll() as $post) {
+              $list[] = new Post($post['id'], $post['author'], $post['content'], $post['date']);
+          }
+
+          return $list;
+      }
   }
 ?>

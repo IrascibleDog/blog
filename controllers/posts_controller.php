@@ -39,5 +39,13 @@
           $posts = Post::add($_POST['post_author'], $_POST['post_cont']);
           require_once('views/posts/index.php');
       }
+
+      public function refresh() {
+          if (!isset($_GET['id']))
+              return call('pages', 'error');
+
+          $posts = Post::update($_GET['id'], $_POST['post_author'], $_POST['post_cont']);
+          require_once('views/posts/index.php');
+      }
   }
 ?>
