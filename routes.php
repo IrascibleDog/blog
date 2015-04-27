@@ -7,7 +7,6 @@
         $controller = new PagesController();
       break;
       case 'posts':
-        // we need the model to query the database later in the controller
         require_once('models/post.php');
         $controller = new PostsController();
       break;
@@ -16,7 +15,6 @@
     $controller->{ $action }();
   }
 
-  // we're adding an entry for the new controller and its actions
   $controllers = array('pages' => ['home', 'error'],
                        'posts' => ['index', 'show', 'remove', 'append_show', 'append', 'refresh_show', 'refresh']);
 
