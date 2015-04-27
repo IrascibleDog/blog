@@ -12,7 +12,7 @@
       break;
         case 'registration' :
             require_once('models/registration.php');
-            $controller = new PostsController();
+            $controller = new RegistrationController();
     }
 
     $controller->{ $action }();
@@ -20,7 +20,7 @@
 
   $controllers = array('pages' => ['home', 'error'],
                        'posts' => ['index', 'show', 'remove', 'append_show', 'append', 'refresh_show', 'refresh'],
-                        'registration' => []);
+                        'registration' => ['login_show', 'create_show']);
 
   if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {

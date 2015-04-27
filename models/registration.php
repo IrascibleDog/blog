@@ -12,5 +12,4 @@
             $this->e_mail = $e_mail;
         }
 
-
     }
