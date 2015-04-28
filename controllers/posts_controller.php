@@ -1,5 +1,12 @@
 <?php
-  class PostsController {
+  interface PostsInterface{
+      public function index();
+      public function show();
+      public function remove();
+      public function append();
+  }
+
+  class PostsController implements PostsInterface{
     public function index() {
       $posts = Post::all();
       require_once('views/posts/index.php');
@@ -18,7 +25,7 @@
         return call('pages', 'error');
 
       $posts = Post::delete($_GET['id']);
-      require_once('views/posts/index.php');
+      require_once('views/posts/index_administrator.php');
     }
 
       public function append_show() {
@@ -27,10 +34,8 @@
 
       public function append() {
 
-          //check login!!
-
           $posts = Post::add($_POST['post_author'], $_POST['post_cont']);
-          require_once('views/posts/index.php');
+          require_once('views/posts/index_administrator.php');
       }
 
       public function refresh_show() {
@@ -46,7 +51,7 @@
               return call('pages', 'error');
 
           $posts = Post::update($_GET['id'], $_POST['post_author'], $_POST['post_cont']);
-          require_once('views/posts/index.php');
+          require_once('views/posts/index_administrator.php');
       }
   }
 ?>

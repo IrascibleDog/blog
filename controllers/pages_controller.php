@@ -1,5 +1,9 @@
 <?php
-  class PagesController {
+  interface PageInterface{
+      public function home();
+      public function error();
+  }
+  class PagesController implements PageInterface{
     public function home() {
       $first_name = 'Jon';
       $last_name  = 'Snow';

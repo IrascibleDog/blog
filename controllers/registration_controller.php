@@ -1,5 +1,11 @@
 <?php
-    class RegistrationController{
+
+    interface RegInterface{
+        public function login();
+        public function create();
+    }
+
+    class RegistrationController implements RegInterface{
         public function login_show() {
             require_once('views/registration/login_form.php');
         }
