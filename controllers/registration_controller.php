@@ -9,13 +9,19 @@
         }
 
         public function login() {
-
-            $posts = Registration::all();
-            require_once('views/posts/index_administrator.php');
+            if (Registration::validate($_POST['login'], $_POST['password']))
+            {
+                $posts = Registration::all();
+                require_once('views/posts/index_administrator.php');
+            }
+            else
+            {
+                require_once('views/registration/error.php');
+            }
         }
 
         public function create() {
             Registration::add($_POST['login'], $_POST['password'], $_POST['email']);
-
+            require_once('views/registration/confirm.php');
         }
     }

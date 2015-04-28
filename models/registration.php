@@ -1,27 +1,16 @@
 <?php
     class Registration{
-//        public $id;
-//        public $login;
-//        public $password;
-//        public $email;
-//
-//        public function __construct($id, $login, $password, $email) {
-//            $this->id      = $id;
-//            $this->login  = $login;
-//            $this->password = $password;
-//            $this->email = $email;
-//        }
-    public $id;
-    public $author;
-    public $content;
-    public $date;
+        public $id;
+        public $author;
+        public $content;
+        public $date;
 
-    public function __construct($id, $author, $content, $date) {
-        $this->id      = $id;
-        $this->author  = $author;
-        $this->content = $content;
-        $this->date = $date;
-    }
+        public function __construct($id, $author, $content, $date) {
+            $this->id      = $id;
+            $this->author  = $author;
+            $this->content = $content;
+            $this->date = $date;
+        }
 
         public static function all() {
             $list = [];
@@ -42,5 +31,22 @@
             $req->bindParam(':password', $password);
             $req->bindParam(':email', $email);
             $req->execute();
+        }
+
+        public static function validate($username, $password) {
+            $db = Db::getInstance();
+            $req = $db->prepare('SELECT * FROM users WHERE login = :login AND password = :password');
+            $req->bindParam(':login', $username);
+            $req->bindParam(':password', $password);
+            $req->execute();
+
+            if ($req->rowCount()>0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }

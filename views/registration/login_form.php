@@ -1,6 +1,6 @@
 <p>login to admin panel</p>
 
-<form method="post" action="?controller=registration&action=append">
+<form method="post" action="?controller=registration&action=login">
     <label>login: </label><input type="text" name="login" />
     <label>password: </label><input type="password" name="password"/>
     <input type="submit" value='login' autocomplete="off" />
